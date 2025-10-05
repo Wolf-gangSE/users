@@ -12,7 +12,10 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"chriskacerguis/codeigniter-restserver": "*"
+		"chriskacerguis/codeigniter-restserver": "*",
+		"zircote/swagger-php": "*",
+		"firebase/php-jwt": "*",
+		"vlucas/phpdotenv": "*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

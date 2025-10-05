@@ -7,17 +7,24 @@ class Users extends RestController {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('User');
+        $this->load->model('user');
+        $this->load->helper('auth');
+
+        $this->auth_user_data = verify_jwt_token();
+
+        if ($this->auth_user_data === false) {
+            $this->response(['message' => 'Acesso não autorizado.'], RestController::HTTP_UNAUTHORIZED);
+            exit();
+        }
     }
 
     // Método GET para listar usuários
     public function index_get($id = 0)
     {
-        // O Model já garante que a senha não será retornada
         if(!empty($id)){
-            $data = $this->User->get_user($id);
+            $data = $this->user->get_user($id);
         } else {
-            $data = $this->User->get_all_users();
+            $data = $this->user->get_all_users();
         }
 
         if ($data) {
@@ -47,7 +54,7 @@ class Users extends RestController {
                 'email' => $this->post('email'),
                 'password' => password_hash($this->post('password'), PASSWORD_BCRYPT)
             ];
-            $insert_id = $this->User->insert_user($data);
+            $insert_id = $this->user->insert_user($data);
             
             if ($insert_id) {
                 unset($data['password']);
@@ -90,7 +97,7 @@ class Users extends RestController {
             $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         }
 
-        if ($this->User->update_user($id, $data)) {
+        if ($this->user->update_user($id, $data)) {
             $this->response(['message' => 'Usuário atualizado com sucesso.'], RestController::HTTP_OK);
         } else {
             $this->response(['message' => 'Erro ao atualizar usuário.'], RestController::HTTP_INTERNAL_SERVER_ERROR);
@@ -100,7 +107,14 @@ class Users extends RestController {
     // Método DELETE para deletar um usuário
     public function index_delete($id)
     {
-        if ($this->User->delete_user($id)) {
+        $user = $this->user->get_user($id);
+
+        if (!$user) {
+            $this->response(['message' => 'Usuário não encontrado.'], RestController::HTTP_NOT_FOUND);
+            return;
+        }
+
+        if ($this->user->delete_user($id)) {
             $this->response(['message' => 'Usuário deletado com sucesso.'], RestController::HTTP_OK);
         } else {
             $this->response(['message' => 'Erro ao deletar usuário.'], RestController::HTTP_INTERNAL_SERVER_ERROR);

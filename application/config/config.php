@@ -530,3 +530,5 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['jwt_key'] = isset($_ENV['JWT_SECRET_KEY']) ? $_ENV['JWT_SECRET_KEY'] : 'variavel_padrao';
