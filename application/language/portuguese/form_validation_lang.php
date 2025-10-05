@@ -1,0 +1,26 @@
+<?php
+$lang['required']             = 'O campo {field} é obrigatório.';
+$lang['isset']                = 'O campo {field} deve conter um valor.';
+$lang['valid_email']          = 'O campo {field} deve conter um email válido.';
+$lang['valid_emails']         = 'O campo {field} deve conter todos os emails válidos.';
+$lang['valid_url']            = 'O campo {field} deve conter uma URL válida.';
+$lang['valid_ip']             = 'O campo {field} deve conter um IP válido.';
+$lang['min_length']           = 'O campo {field} deve ter pelo menos {param} caracteres.';
+$lang['max_length']           = 'O campo {field} não pode exceder {param} caracteres.';
+$lang['exact_length']         = 'O campo {field} deve ter exatamente {param} caracteres.';
+$lang['alpha']                = 'O campo {field} deve conter apenas letras.';
+$lang['alpha_numeric']        = 'O campo {field} deve conter apenas caracteres alfanuméricos.';
+$lang['alpha_dash']           = 'O campo {field} deve conter apenas caracteres alfanuméricos, sublinhados e traços.';
+$lang['numeric']              = 'O campo {field} deve conter apenas números.';
+$lang['integer']              = 'O campo {field} deve conter um número inteiro.';
+$lang['matches']              = 'O campo {field} deve corresponder ao campo {param}.';
+$lang['is_unique']            = 'O valor do campo {field} já está sendo utilizado.';
+$lang['regex_match']          = 'O campo {field} não está no formato correto.';
+$lang['differs']              = 'O campo {field} deve ser diferente do campo {param}.';
+$lang['greater_than']         = 'O campo {field} deve conter um número maior que {param}.';
+$lang['greater_than_equal_to'] = 'O campo {field} deve conter um número maior ou igual a {param}.';
+$lang['less_than']            = 'O campo {field} deve conter um número menor que {param}.';
+$lang['less_than_equal_to']   = 'O campo {field} deve conter um número menor ou igual a {param}.';
+$lang['in_list']              = 'O campo {field} deve ser um de: {param}.';
+$lang['alpha_numeric_spaces'] = 'O campo {field} deve conter apenas letras, números e espaços.';
+$lang['decimal']              = 'O campo {field} deve conter um número decimal.';
