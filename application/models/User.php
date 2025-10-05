@@ -1,17 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends CI_Model {
+class User extends CI_Model {
 
     private $table = 'users';
 
     public function get_all_users()
     {
+        $this->db->select('id, name, email, created_at');
         return $this->db->get($this->table)->result();
     }
 
     public function get_user($id)
     {
+        $this->db->select('id, name, email, created_at');
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
