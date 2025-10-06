@@ -1,6 +1,6 @@
 # API RESTful para Gerenciamento de Usuários (Desafio Técnico)
 
-Esta é uma API RESTful completa para operações de CRUD de usuários, desenvolvida em PHP com o framework CodeIgniter 3. O projeto foi construído seguindo as melhores práticas de mercado, com foco em segurança, escalabilidade e documentação.
+Esta é uma API RESTful completa para operações de CRUD de usuários, desenvolvida em PHP com o framework CodeIgniter 3. O projeto foi construído seguindo boas práticas de mercado, com foco em segurança, escalabilidade e documentação.
 
 ## ✨ Features Implementadas
 
