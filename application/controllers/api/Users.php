@@ -10,11 +10,19 @@ class Users extends RestController {
         $this->load->model('user');
         $this->load->helper('auth');
 
-        $this->auth_user_data = verify_jwt_token();
+        $http_verb = $this->request->method;
 
-        if ($this->auth_user_data === false) {
-            $this->response(['message' => 'Acesso não autorizado.'], RestController::HTTP_UNAUTHORIZED);
-            exit();
+        $ci_method = $this->router->fetch_method();
+
+        $is_public = ($ci_method === 'index' && $http_verb === 'post');
+
+        if (!$is_public) {
+            $this->auth_user_data = verify_jwt_token();
+
+            if ($this->auth_user_data === false) {
+                $this->response(['message' => 'Acesso não autorizado.'], RestController::HTTP_UNAUTHORIZED);
+                exit();
+            }
         }
     }
 
