@@ -77,6 +77,13 @@ class Users extends RestController {
     // Método PUT para atualizar um usuário
     public function index_put($id)
     {
+        $user = $this->user->get_user($id);
+
+        if (!$user) {
+            $this->response(['message' => 'Usuário não encontrado.'], RestController::HTTP_NOT_FOUND);
+            return;
+        }
+        
         $data = $this->put();
 
         if (empty($data)) {
